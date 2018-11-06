@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/sashahavia/mars#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-loader": "^8.0.4",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
@@ -35,7 +36,6 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-2": "^7.0.0",
-    "axios": "^0.18.0",
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^1.0.1",
     "node-sass": "^4.10.0",
