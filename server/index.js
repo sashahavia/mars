@@ -6,6 +6,9 @@ const morgan = require('morgan');
 // server logs help with debugging (even in production environments)
 app.use(morgan('dev'));
 
+// auth and api routes
+app.use('/api', require('./api'));
+
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Handle 500 errors
