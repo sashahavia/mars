@@ -11,9 +11,10 @@ class Board extends Component {
     this.rows = HEIGHT / CELL_SIZE;
     this.cols = WIDTH / CELL_SIZE;
     this.board = this.makeEmptyBoard();
-    // this.state = {
-    //   cells: [],
-    // };
+    this.state = {
+      cells: [],
+      locations: [],
+    };
   }
 
   // Create an empty board
@@ -45,14 +46,16 @@ class Board extends Component {
       .then(response => response.json())
       .then(data => {
         data.Bots.map(bot => {
-          let y = bot.Location.Y;
-          let x = bot.Location.X;
-          this.board[y][x] = !this.board[y][x];
+          this.setState(prevState => ({
+            locations: [...prevState.locations, bot.Location],
+          }));
         });
       });
   }
 
   render() {
+    const { locations } = this.state;
+    console.log(locations);
     return (
       <div>
         <div
