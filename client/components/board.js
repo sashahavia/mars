@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Cell from './cell';
 
 const CELL_SIZE = 20;
@@ -37,7 +38,6 @@ class Board extends Component {
     for (let y = 0; y < this.rows; y++) {
       for (let x = 0; x < this.cols; x++) {
         if (this.board[y][x]) {
-          console.log('here');
           cells.push({ x, y });
         }
       }
@@ -49,14 +49,15 @@ class Board extends Component {
     setInterval(this.getData, 1000);
   }
 
-  getData() {
-    fetch('api/nodes')
-      .then(response => response.json())
-      .then(data => {
-        const locations = data.Bots.map(obj => obj.Location);
-        this.setState({ locations });
-        this.updateCells();
-      });
+  async getData() {
+    try {
+      const { data } = await axios.get('api/nodes');
+      const locations = data.Bots.map(obj => obj.Location);
+      this.setState({ locations });
+      this.updateCells();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   updateCells() {
