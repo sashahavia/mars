@@ -76,8 +76,8 @@ class Board extends Component {
         <div
           className="board"
           style={{
-            width: WIDTH,
-            height: HEIGHT,
+            width: WIDTH + 1,
+            height: HEIGHT + 1,
             backgroundSize: `${CELL_SIZE}px ${CELL_SIZE}px`,
           }}
         >
